@@ -1,0 +1,43 @@
+package tn.esprit.zouitenhamza4iet_i4.Domaine;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Contrat {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long idContrat;
+    private LocalDate dateSignature;
+    private BigDecimal montantTotal;
+    private boolean valide;
+
+    // Contrat 1 --- 1 Reservation (cote proprietaire : FK reservation_id_reservation)
+    @OneToOne(fetch = FetchType.LAZY)
+    private Reservation reservation;
+
+    // Contrat <>--- * Paiement (composition, cote inverse) : ALL + orphanRemoval
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL,
+               orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Paiement> paiements = new ArrayList<>();
+
+    // Synchronise les deux cotes de l'association
+    public void addPaiement(Paiement paiement) {
+        paiements.add(paiement);
+        paiement.setContrat(this);
+    }
+
+    public void removePaiement(Paiement paiement) {
+        paiements.remove(paiement);
+        paiement.setContrat(null);
+    }
+}

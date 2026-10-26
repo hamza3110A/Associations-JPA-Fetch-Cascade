@@ -14,7 +14,7 @@ import java.util.Set;
 public class Equipement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idEquipement;
+    private Long idEquipement;
     private String libelle;
 
     // Equipement * --- * Vehicule (cote inverse) : aucune cascade, equipements partages

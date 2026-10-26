@@ -14,7 +14,7 @@ import java.util.List;
 public class Agence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idAgence;
+    private Long idAgence;
     private String nom;
     private String ville;
     private String adresse;

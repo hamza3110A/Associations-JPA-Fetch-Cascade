@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idReservation;
+    private Long idReservation;
     private LocalDate dateDebut;
     private LocalDate dateFin;
     @Enumerated(EnumType.STRING)

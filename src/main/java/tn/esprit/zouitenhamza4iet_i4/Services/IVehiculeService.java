@@ -4,7 +4,7 @@ import tn.esprit.zouitenhamza4iet_i4.Domaine.Vehicule;
 
 import java.util.List;
 
-public interface IVehiculeServices {
+public interface IVehiculeService {
 
     Vehicule create(Vehicule vehicule);
 

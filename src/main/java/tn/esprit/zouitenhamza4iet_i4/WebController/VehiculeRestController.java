@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.zouitenhamza4iet_i4.Domaine.Vehicule;
-import tn.esprit.zouitenhamza4iet_i4.Services.IVehiculeServices;
+import tn.esprit.zouitenhamza4iet_i4.Services.IVehiculeService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("vehicules")
 @RequiredArgsConstructor
-public class vehiiculeRestController {
+public class VehiculeRestController {
 
-    private final IVehiculeServices vehiculeService;
+    private final IVehiculeService vehiculeService;
 
     @PostMapping("add")
     public Vehicule create(@RequestBody Vehicule vehicule) {
